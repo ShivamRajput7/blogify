@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <div class="comment-section">
+    <h4>
+      Comments
+      <!-- Comment Count Badge -->
+      <span class="badge badge-primary"
+        ><%- locals.comment.length%> Comments</span
+      >
+    </h4>
+    <form method="post" action="/blog/comment/<%- blog._id %>">
+      <!-- Comment Input Form -->
+      <div class="comment-form mb-4">
+        <textarea
+          class="form-control"
+          id="comment-text"
+          placeholder="Add a comment..."
+          rows="4"
+          name="comment"
+          required
+        ></textarea>
+        <button class="btn comment-submit-btn mt-3" type="submit">
+          Post Comment
+        </button>
+      </div>
+    </form>
+
+    <!-- Comments Display -->
+    <% if (locals.comment) { %>
+    <div class="comments-list">
+      <% comment.forEach(comment => { %>
+
+      <div class="comment">
+        <div class="comment-profile-pic">
+          <img
+            src="<%- comment.commentedBy.profileImageUrl %>"
+            alt="Profile Picture"
+            class="profile-pic"
+          />
+        </div>
+        <div class="comment-text">
+          <p>
+            <strong
+              ><%- comment.commentedBy.fullname %> <% if
+              (comment.commentedBy._id == user?._id) { %>
+              <span class="you-badge"> you</span>
+              <% } %> :</strong
+            >
+
+            <%- comment.comment %>
+          </p>
+          <small><%- comment.createdAt %></small>
+        </div>
+      </div>
+      <% }) %>
+
+      <!-- More comments can be dynamically added here -->
+    </div>
+    <% } %>
+  </div>
+</div>

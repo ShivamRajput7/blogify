@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Blog</title>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <!-- navigation bar is here -->
+    <%- include('partials/nav') %>
+
+    <!-- Blog Start here -->
+    <% if (locals.blog) { %>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="container mt-4">
+            <a href="/" class="back-btn">
+              <i class="bi bi-arrow-left me-2"></i> Back to Home
+            </a>
+          </div>
+          <div class="card blog-full-card p-4 shadow-sm">
+            <h1 class="blog-full-title"><%- blog.title %></h1>
+            <img
+              src="/uploads/<%- blog.imageUrl %>"
+              alt="Blog Image"
+              class="blog-full-image my-4"
+            />
+            <div class="blog-meta mb-4">
+              <span class="blog-author"
+                >By: <strong><%- blog.createdBy.fullname %></strong></span
+              >
+              <span class="blog-date ms-4"
+                >Published on: <strong><%- blog.createdAt %></strong></span
+              >
+            </div>
+            <div class="blog-content">
+              <p><%- blog.body %></p>
+              <!-- Add more paragraphs as needed -->
+            </div>
+          </div>
+
+          <%- include('partials/author') %> <%- include('partials/comment') %>
+        </div>
+      </div>
+    </div>
+    <% } %>
+    <!-- this script -->
+    <%-include('partials/footer') %> <%-include('./partials/script') %>
+  </body>
+</html>

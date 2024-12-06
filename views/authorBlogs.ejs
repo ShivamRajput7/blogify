@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%- author.fullname %>'s Blog post</title>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <!-- navigation bar is here -->
+    <%- include('partials/nav') %>
+    <div class="container mt-5 static-author-page">
+      <!-- Author Header -->
+      <div class="static-author-header text-center">
+        <img
+          src="<%- author.profileImageUrl %>"
+          alt="Author Profile Picture"
+          class="static-author-profile-pic"
+        />
+        <h1 class="static-author-name"><%- author.fullname %></h1>
+        <p class="static-author-bio">
+          A passionate writer, traveler, and tech enthusiast. Sharing stories
+          about coding and life.
+        </p>
+        <!-- <div class="static-author-social-links">
+          <a
+            href="https://www.linkedin.com/in/shivamrajput7/"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a
+            href="https://www.instagram.com/shivamrajput7/"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="bi bi-instagram"></i>
+          </a>
+          <a
+            href="https://x.com/ShivamR745"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="bi bi-twitter"></i>
+          </a>
+        </div> -->
+      </div>
+
+      <!-- Blog List Section -->
+      <% if (blog) { %>
+      <!-- Author Stats -->
+      <div class="static-author-stats mt-4 text-center">
+        <h4>Total Blog Posts: <strong><%- blog.length %></strong></h4>
+      </div>
+      <div class="static-author-blogs mt-5">
+        <h2 class="blogs-section-title">Blogs by <%- author.fullname %></h2>
+
+        <div class="static-blogs-grid">
+          <% blog.forEach(blog => { %>
+
+          <div class="static-blog-card">
+            <img
+              src="/uploads/<%- blog.imageUrl %>"
+              alt="Blog Cover Image"
+              class="static-blog-image"
+            />
+            <h3 class="static-blog-title"><%- blog.title %></h3>
+            <a href="/blog/<%- blog._id %>" class="static-read-more-btn"
+              >Read More
+            </a>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+    <% } else{%>
+    <div class="container mt-5 text-center no-posts-section">
+      <h2 class="fourth-text-color no-posts-message">
+        <i
+          >Oops! <strong><%- author.fullname %></strong> hasn't shared their
+          stories yet.
+        </i>
+      </h2>
+      <p class="no-posts-subtext">
+        Stay tuned! Great things are worth waiting for. ✨
+      </p>
+    </div>
+
+    <% } %>
+
+    <!-- footer section is here -->
+    <%-include('partials/footer') %>
+    <!-- this script -->
+    <%-include('./partials/script') %>
+  </body>
+</html>

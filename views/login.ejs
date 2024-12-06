@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+
+    <%- include('./partials/head') %>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <div class="card p-4 shadow-sm">
+            <h3 class="text-center mb-4 fourth-color">Login</h3>
+            <form method="post">
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Enter your email"
+                  required
+                  name="email"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Enter your password"
+                  required
+                  name="password"
+                />
+              </div>
+              <button
+                type="submit"
+                class="btn second-color text-light w-100 mt-3"
+              >
+                Login
+              </button>
+            </form>
+          </div>
+          <p class="text-center mt-3">
+            If you don't have an account,
+            <a href="/signup" class="text-decoration-none second-color"
+              >sign up now</a
+            >.
+          </p>
+
+          <% if (locals.messege) { %>
+          <div class="alert alert-danger mt-3" role="alert">
+            <span><%- messege %></span>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <%- include('./partials/script') %>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<% if (locals.blog) { %>
+<div class="container mt-5">
+  <div class="row">
+    <% blog.forEach(blog => { %>
+    <div class="col-md-3">
+      <div class="card blog-home-card shadow-sm">
+        <img
+          src="uploads/<%- blog.imageUrl %>"
+          class="card-img-top blog-home-image"
+          alt="Blog Image"
+        />
+        <div class="card-body">
+          <h5 class="blog-home-title"><%- blog.title %></h5>
+          <!-- <p class="blog-home-excerpt"><%- blog.body %></p> -->
+          <a href="blog/<%- blog._id %>" class="btn blog-home-btn">Read More</a>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>
+<% } %>
