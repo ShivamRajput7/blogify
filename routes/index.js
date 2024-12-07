@@ -17,6 +17,9 @@ router.get("/contact", async (req, res) => {
   return res.render("contactPage", { user: req.user });
 });
 router.get("/logout", (req, res) => {
+  if (!req.user) {
+    return res.redirect("/");
+  }
   return res.clearCookie("token").redirect("/");
 });
 
